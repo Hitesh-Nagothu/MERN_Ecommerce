@@ -60,3 +60,13 @@ exports.signIn=(request, response) => {
     })
 
 ;}
+
+exports.signOut = (req, res) => {
+    res.clearCookie('t')
+    res.json({message:'Singout succesfull'});
+};
+
+exports.requireSignin=expressJwt({
+    secret: process.env.JWT_SECRET,
+    userProperty: "auth",
+})
