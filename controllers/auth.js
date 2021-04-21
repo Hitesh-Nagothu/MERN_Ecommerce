@@ -8,7 +8,7 @@ const expressJwt = require('express-jwt'); //authorization check
 exports.signUp=(request, response)=>{
     console.log("Request body",request.body);
     const user = new User(request.body);
-    
+     
     user.save((err, user)=>{
         if(err){
             return response.status(400).json({
@@ -68,5 +68,27 @@ exports.signOut = (req, res) => {
 
 exports.requireSignin=expressJwt({
     secret: process.env.JWT_SECRET,
+    algorithms: ["HS256"],
     userProperty: "auth",
 })
+
+exports.isAuth= (req, res, next)=>{
+    let user = req.profile && req.auth && req.profile._id==req.auth._id
+
+        if (!user){
+            return res.status(403).json({
+                error:"Access Denied"
+            })
+        }
+        next();
+
+};
+
+exports.isAdmin=(req, res, next)=>{
+    if (req.profile.role===0){
+        return res.status(403).json({
+            error:'Admin resource! Access denied'
+        })
+    }
+    next();
+}
