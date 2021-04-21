@@ -11,6 +11,7 @@ Using JWT for user authorization
 Expected Functionality:
 1. Create Users
 2. Add products to the store
-3. Build billing interface
-4. Integrating paypal payment services to checkout
+3. Search for products in the database
+4. Build billing interface
+5. Integrating paypal payment services to checkout
 
