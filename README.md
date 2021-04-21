@@ -12,6 +12,7 @@ Expected Functionality:
 1. Create Users
 2. Add products to the store
 3. Search for products in the database
-4. Build billing interface
-5. Integrating paypal payment services to checkout
+4. Add product to cart 
+5. Build billing interface
+6. Integrating paypal payment services to checkout
 
